@@ -1,22 +1,7 @@
-# Complete ELB example
+# Take home evaluation
 
-Configuration in this directory creates ELB, EC2 instances and attach them together.
+Configuration in this directory creates two ALB's, two Auto-Scaling Groups, and RDS instance (Primary/read replica), VPN, Security Groups and associated configs.
 
-This example also creates ACM SSL certificate which can be attached to a secure listener in ELB.
-
-Data sources are used to discover existing VPC resources (VPC, subnet and security group).
-
-## Usage
-
-To run this example you need to execute:
-
-```bash
-$ terraform init
-$ terraform plan
-$ terraform apply
-```
-
-Note that this example may create resources which cost money. Run `terraform destroy` when you don't need these resources.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
