@@ -1,6 +1,6 @@
 # Take home evaluation
 
-Configuration in this directory creates two ALB's, two Auto-Scaling Groups, and RDS instance (Primary/read replica), VPN, Security Groups and associated configs.
+Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
