@@ -6,8 +6,6 @@ secret_key = "<YOUR AWS CONSOLE SECRET KEY>"
 
 location = "us-east-1"
 
-aws_vpc_id = "prod_vpc12345"
-
 environment = "prod"
 
 asg_name = "prod_asg"
