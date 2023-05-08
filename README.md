@@ -1,6 +1,6 @@
 # Take home evaluation
 
-Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
+Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an Internet Gateway, Route table for IG, an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
 
 Used existing or create new VPC with dedicated CIDR block.   Create the subnets (CIDR's) for the web and db instances.  Configure each subnet with the associated Availability Zone (AZ) - subnets 1,3,5 to AZa, and subnet 2,4,6 to AZb.
 
@@ -30,6 +30,14 @@ ALB:  Elastic Load Balancing publishes data points to Amazon CloudWatch for the 
 
 Flow logs
 VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For theflow log for a subnet or VPC, each network interface in that subnet or VPC will be monitored.
+
+To run the Terraform against dev/stage/prod environments, use the following commands:
+
+terraform apply -var-file="terraform-dev.tfvars"
+terraform apply -var-file="terraform-stage.tfvars"
+terraform apply -var-file="terraform-prod.tfvars"
+
+
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
