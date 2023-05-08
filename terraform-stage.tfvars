@@ -6,8 +6,6 @@ secret_key = "<YOUR AWS CONSOLE SECRET KEY>"
 
 location = "us-east-2"
 
-aws_vpc_id = "stage_vpc12345"
-
 environment = "stage"
 
 asg_name = "stage_asg"
