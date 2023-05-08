@@ -34,7 +34,9 @@ VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For th
 To run the Terraform against dev/stage/prod environments, use the following commands:
 
 terraform apply -var-file="terraform-dev.tfvars"
+
 terraform apply -var-file="terraform-stage.tfvars"
+
 terraform apply -var-file="terraform-prod.tfvars"
 
 
