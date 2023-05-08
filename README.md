@@ -1,6 +1,6 @@
 # Take home evaluation
 
-Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an Internet Gateway, Route table for IG, an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
+Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an Internet Gateway, Route table for IG, Web Application Firewall (with ACL), an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
 
 Used existing or create new VPC with dedicated CIDR block.   Create the subnets (CIDR's) for the web and db instances.  Configure each subnet with the associated Availability Zone (AZ) - subnets 1,3,5 to AZa, and subnet 2,4,6 to AZb.
 
