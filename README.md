@@ -11,9 +11,8 @@ Create the Launch template and include the AMI's for the web application server,
 
 Create the Auto Scaling Group (ASG), referencing the launch template created in step 3, the VPC and appropriate subnets from Step 1.   Attach ASG with the ELB created in step2. Registering the Amazon EC2 instances with a load balancer can be configured here, so I chose the ALB that will be created in Step 6.  Turn on Elastic Load Balancing health checks.  Under Additional settings, Monitoring, choose whether to enable CloudWatch group metrics collection.  For Enable default instance warmup, select this option and choose the warm-up time for your application. If you are creating an Auto Scaling group that has a scaling policy, the default instance warmup feature improves the Amazon CloudWatch metrics used for dynamic scaling
  
-Amazon RDS:  all logs, backups, and snapshots are encrypted using AWS KMS key to encrypt these resources.  A read replica is created in both AZ's A read replica and encrypted using the same KMS key. 
-A standby of the replica in another Availability Zone is also created for failover support for the replica.
-
+Created Amazon RDS master node in AZa with a Standby node in AZb for failover.  All RDS logs, backups, and snapshots on both RDS nodes are encrypted using AWS KMS key to encrypt these resources.   
+ 
 Create an internet-facing Application Load Balancer (ALB). With Application Load Balancers, cross-zone load balancing is always enabled at the load balancer level. When cross-zone load balancing is enabled, each load balancer node distributes traffic across the registered targets in all enabled Availability Zones.  Default routing is done via round robin.
  
 On the Application Load Balancer, create a target group, which is used to route requests to one or more registered targets (i.e. EC2 instances). When the listener rule is created on the ALB, a target group and conditions are specified. When a rule condition is met, traffic is forwarded to the relevant target group. Again, default routing is done via round robin.
@@ -39,7 +38,7 @@ VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For th
 
 Created an ElasticCache Cluster in AZ's a & b
 
-Application servers in both AZ's will reach the ElasticCache first for cached SQL queries; if not available, the app servers will reach the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZ b
+Application servers in both AZ's will hit the ElasticCache first for cached SQL queries; if not available, the app servers will hit the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZ b
 
 To run the Terraform against dev/stage/prod environments, use the following commands:
 
