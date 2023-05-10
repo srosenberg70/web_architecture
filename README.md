@@ -36,7 +36,7 @@ ALB:  Elastic Load Balancing publishes data points to Amazon CloudWatch for the 
 Flow logs
 VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For theflow log for a subnet or VPC, each network interface in that subnet or VPC will be monitored.
 
-Created an ElasticCache Cluster in AZ's a & b
+Created an ElasticCache Cluster in AZ's a & b.  Examples of Relational Database Caching Techniques can be found here https://docs.aws.amazon.com/whitepapers/latest/database-caching-strategies-using-redis/relational-database-caching-techniques.html
 
 Application servers in both AZ's will hit the ElasticCache first for cached SQL queries; if not available, the app servers will hit the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZb
 
