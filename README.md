@@ -1,6 +1,6 @@
 # Take home evaluation
 
-Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an Internet Gateway, Route table for IG, Web Application Firewall (with ACL), an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
+Configuration in this directory creates two ALB's, two Auto-Scaling Groups, an Internet Gateway, Route table for IG, Web Application Firewall (with ACL), ElastiCache cluster, an RDS instance (Primary/read replica), VPC, subnets, Availability Zones, Security Groups and associated configs.
 
 Used existing or create new VPC with dedicated CIDR block.   Create the subnets (CIDR's) for the web and db instances.  Configure each subnet with the associated Availability Zone (AZ) - subnets 1,3,5 to AZa, and subnet 2,4,6 to AZb.
 
@@ -23,6 +23,12 @@ I chose an Application Load Balancer over a Network Load Balancer because the AL
 I created two separate Application load balancers - internet-facing and internal.  The web servers/EC2 instances attached to the internet-facing application load balancer have public IP addresses, and therefore reside in a public subnet.
 The application servers/EC2 intances of the internal application load balancer have only private IP addresses, and therefore reside in private subnets.
 
+I created a Web Application Firewall (WAF) with an ACL that references a rule group with two rule actions: 
+
+      SizeRestrictions_QUERYSTRING:  Inspects for URI query strings that are over 2,048 bytes
+      
+      NoUserAgent_HEADER rule:  Inspects for requests that are missing the HTTP User-Agent header
+      
 Cloudwatch
 EC2:  By default, Amazon EC2 sends metric data to CloudWatch in 5-minute periods
 RDS:  By default, Amazon RDS automatically sends metric data to CloudWatch in 1-minute periods. 
@@ -30,6 +36,10 @@ ALB:  Elastic Load Balancing publishes data points to Amazon CloudWatch for the 
 
 Flow logs
 VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For theflow log for a subnet or VPC, each network interface in that subnet or VPC will be monitored.
+
+Created an ElasticCache Cluster in AZ's a & b
+
+Application servers in both AZ's will reach the ElasticCache first for cached SQL queries; if not available, the app servers will reach the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZ b
 
 To run the Terraform against dev/stage/prod environments, use the following commands:
 
