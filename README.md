@@ -38,7 +38,10 @@ VPC:  I'll create a flow log for a VPC, a subnet, or a network interface. For th
 
 Created an ElasticCache Cluster in AZ's a & b
 
-Application servers in both AZ's will hit the ElasticCache first for cached SQL queries; if not available, the app servers will hit the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZ b
+Application servers in both AZ's will hit the ElasticCache first for cached SQL queries; if not available, the app servers will hit the Primary RDS db in AZ A.  If RDS Primary not available, app servers will connect to RDS standby in AZb
+
+![CareJob (17) (1)](https://github.com/srosenberg70/web_architecture/assets/50153532/7cc43301-47cb-40ed-9004-7ea5c0e2262e)
+
 
 To run the Terraform against dev/stage/prod environments, use the following commands:
 
